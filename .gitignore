@@ -1,0 +1,6 @@
+# ignore all logs and . file
+*.log
+
+# ignore all auxiliar folders
+__history/
+__recovery/

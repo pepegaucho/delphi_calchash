@@ -1,0 +1,48 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{3ED1B01A-5C44-44EE-B153-B0AADEC273C4}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="CalcHash.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="cfilhash.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="CalcHash">
+			<MSBuild Projects="CalcHash.dproj"/>
+		</Target>
+		<Target Name="CalcHash:Clean">
+			<MSBuild Targets="Clean" Projects="CalcHash.dproj"/>
+		</Target>
+		<Target Name="CalcHash:Make">
+			<MSBuild Targets="Make" Projects="CalcHash.dproj"/>
+		</Target>
+		<Target Name="cfilhash">
+			<MSBuild Projects="cfilhash.dproj"/>
+		</Target>
+		<Target Name="cfilhash:Clean">
+			<MSBuild Targets="Clean" Projects="cfilhash.dproj"/>
+		</Target>
+		<Target Name="cfilhash:Make">
+			<MSBuild Targets="Make" Projects="cfilhash.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="CalcHash;cfilhash"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="CalcHash:Clean;cfilhash:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="CalcHash:Make;cfilhash:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>
